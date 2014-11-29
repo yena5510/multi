@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-testtesttest
-=======
-test JooYoung
->>>>>>> 5916acb8e5829971fcbc6e1ac05b64184d50e3b7
