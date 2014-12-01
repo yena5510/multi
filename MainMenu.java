@@ -12,10 +12,10 @@ public class MainMenu {
 		Scanner MenuItemScan = new Scanner(System.in);
 		
 		System.out.println("|-----------------------------|\n");
-		System.out.println("|         도서관 도서 관리 프로그램           |\n");
+		System.out.println("| 도서관 도서 관리 프로그램   |\n");
 		System.out.println("|-----------------------------|\n");
-		System.out.println("| 1. 로그인                                                  |\n");
-		System.out.println("| 2. 가입하기                                               |\n");
+		System.out.println("| 1. 로그인                   |\n");
+		System.out.println("| 2. 가입하기                 |\n");
 		System.out.println("|-----------------------------|\n");
 		System.out.println("메뉴를 선택하세요: ");
 		
@@ -44,7 +44,7 @@ public class MainMenu {
 		System.out.println("아이디와 비밀번호를 입력해주세요\n");
 		System.out.println("ID: ");
 		id = logindatascan.nextLine();
-		System.out.println("\nPassword: ");
+		System.out.println("Password: ");
 		password = logindatascan.nextLine();
 		
 		System.out.println("id: " + id +  "  password: " + password);
