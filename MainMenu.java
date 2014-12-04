@@ -1,23 +1,52 @@
+package dbtest2;
 import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class MainMenu {
 	
-	public static void main(String[] args){
-		MainMenu menu = new MainMenu();
+	public static Connection makeConnection(){
+        String url = "jdbc:mysql://localhost:3307/booktest";
+        String id = "root";
+        String pw = "gina1768";
+        Connection con = null;
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("µå¶óÀÌ¹ö ÀûÀç ¼º°ø ... µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÁßÀÔ´Ï´Ù.");
+            con = DriverManager.getConnection(url, id, pw);
+            System.out.println("µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á ¼º°ø");
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        return con;
+    }
+    public static void main(String[] args) {
+    	MainMenu menu = new MainMenu();
 		menu.MainMenu();
-	}
-	
-	private void MainMenu() {
+        // TODO Auto-generated method stub
+        
+        
+    }
+    private void MainMenu() {
 		String selectedMenuItem;
 		Scanner MenuItemScan = new Scanner(System.in);
 		
 		System.out.println("|-----------------------------|\n");
-		System.out.println("| ë„ì„œê´€ ë„ì„œ ê´€ë¦¬ í”„ë¡œê·¸ë¨   |\n");
+		System.out.println("| µµ¼­°ü µµ¼­ °ü¸® ÇÁ·Î±×·¥   |\n");
 		System.out.println("|-----------------------------|\n");
-		System.out.println("| 1. ë¡œê·¸ì¸                   |\n");
-		System.out.println("| 2. ê°€ì…í•˜ê¸°                 |\n");
+		System.out.println("| 1. ·Î±×ÀÎ                   |\n");
+		System.out.println("| 2. °¡ÀÔÇÏ±â                 |\n");
 		System.out.println("|-----------------------------|\n");
-		System.out.println("ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”: ");
+		System.out.println("¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä: ");
 		
 		selectedMenuItem = MenuItemScan.nextLine();
 		
@@ -29,7 +58,7 @@ public class MainMenu {
 			registerStudent();
 			break;
 		default:
-			System.out.println("ì§€ì›ë˜ì§€ ì•ŠëŠ” ë©”ë‰´ ë²ˆí˜¸ì…ë‹ˆë‹¤.");
+			System.out.println("Áö¿øµÇÁö ¾Ê´Â ¸Ş´º ¹øÈ£ÀÔ´Ï´Ù.");
 			break;		
 		}
 		
@@ -41,7 +70,7 @@ public class MainMenu {
 		String password = null;
 		Scanner logindatascan = new Scanner(System.in);
 		
-		System.out.println("ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”\n");
+		System.out.println("¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä\n");
 		System.out.println("ID: ");
 		id = logindatascan.nextLine();
 		System.out.println("Password: ");
@@ -58,20 +87,55 @@ public class MainMenu {
 		String id;
 		String password;
 		String name;
-		String majar;		
+		String major;		
 		Scanner registerdatascan = new Scanner(System.in);
 		
-		System.out.println("ìƒˆë¡œìš´ í•™ìƒ ê³„ì • ìƒì„±í•˜ê¸°\nì•„ì´ë””ëŠ” í•™ë²ˆìœ¼ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”.\n");
+		System.out.println("»õ·Î¿î ÇĞ»ı °èÁ¤ »ı¼ºÇÏ±â\n¾ÆÀÌµğ´Â ÇĞ¹øÀ¸·Î ÀÔ·ÂÇØÁÖ¼¼¿ä.\n");
 		System.out.println("ID: ");
 		id = registerdatascan.next();
 		System.out.println("Password: ");
 		password = registerdatascan.next();
 		System.out.println("Name: ");
 		name = registerdatascan.next();
-		System.out.println("Majar: ");
-		majar = registerdatascan.next();
+		System.out.println("Major: ");
+		major = registerdatascan.next();
 		
-		System.out.println(id+ " " + password + "  " + name + " " + majar + "  ");
+		System.out.println(id+ " " + password + "  " + name + " " + major + "  ");
+		try {
+            // 1. ¿¬°á °´Ã¼ ¸¸µé±â
+            Connection con = makeConnection();// ¸¸¾à ÀÌ ¹®ÀåÀÌ try¹® ¹Û¿¡ ÀÖÀ¸¸é makeConnection()ÀÌ ½ÇÇàÀº µÇÁö¸¸
+            // Connection con¿¡ ÀúÀåÇÏ°í. ¾Æ·§ÁÙÀÇ con.createStatement()¿¡¼­ »ç¿ëÇÒ con°ú ¿¬µ¿ÀÌ µÇÁö ¾ÊÀ» ¼ö ÀÖ´Ù!!(ÁÖÀÇ)
+            // 2. statment °´Ã¼ ¸¸µé±â
+            Statement stmt = con.createStatement();
+            // 3. ResultSet ¸¸µé±â
+            String sql1 = "select * from student_db";
+            ResultSet rs = stmt.executeQuery(sql1);//ÇÁ·Î½ÃÀú ·©±ÍÁö sql. Äõ¸®¹®¸¸ ¹Ù²Ù´Â ·©±ÍÁö ±â¹ı
+            // 4. µ¥ÀÌÅÍ ÃßÃâÇÏ±â.
+            while(rs.next()){
+                String st_id = rs.getString("studentid");
+                String st_pw = rs.getString("studentpw");
+                String st_name = rs.getString("studentname");
+                String st_major = rs.getString("studentmajor");
+                
+                
+                System.out.println(st_id+"\t"+st_pw+"\t"+st_name+"\t"+st_major);
+            }
+            
+            String sql2 = "Insert into student_db values('"+id+"','"+password+"','"+name+"','"+major+"')";
+            stmt.execute(sql2);
+            rs = stmt.executeQuery(sql1);
+            while(rs.next()){
+                String st_id = rs.getString("studentid");
+                String st_pw = rs.getString("studentpw");
+                String st_name = rs.getString("studentname");
+                String st_major = rs.getString("studentmajor");
+                
+                System.out.println(st_id+"\t"+st_pw+"\t"+st_name+"\t"+st_major);
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 				
 		goBackMenu();
 		
@@ -82,13 +146,13 @@ public class MainMenu {
 		int selectedMenu;
 		Scanner goMenuscan = new Scanner(System.in);
 		
-		System.out.println("\n\në©”ì¸ ë©”ë‰´ë¡œ ëŒì•„ê°€ì‹œê² ìŠµë‹ˆê¹Œ? ì›í•˜ì‹œë©´ 1ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		System.out.println("\n\n¸ŞÀÎ ¸Ş´º·Î µ¹¾Æ°¡½Ã°Ú½À´Ï±î? ¿øÇÏ½Ã¸é 1À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		selectedMenu = goMenuscan.nextInt();
 		if(selectedMenu == 1){
 			MainMenu.main(null);
 		}
 		else
-			System.out.println("1ì´ ì•„ë‹™ë‹ˆë‹¤."); //ì •í•˜ê¸°
+			System.out.println("1ÀÌ ¾Æ´Õ´Ï´Ù."); //Á¤ÇÏ±â
 	}
 
 }
