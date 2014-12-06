@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 //Mainmenu class
 //When program start it begins.
+//bugFix
 public class MainMenu {
      String user_id;
      String user_pw;
