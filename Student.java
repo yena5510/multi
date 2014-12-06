@@ -1,4 +1,4 @@
-import java.util.Scanner;
+﻿import java.util.Scanner;
 
 public class Student {
 	String userId = "1110193";
@@ -11,13 +11,13 @@ public class Student {
 	public void StudentMenu(){
 		String selectedMenuItem;
 		Scanner MenuItemScan = new Scanner(System.in);
-		System.out.println("|-----------------------------|\n");
-		System.out.println("|----------학생 메인 메뉴----------|\n");
-		System.out.println("| 1. 책 검색하기 |\n");
-		System.out.println("| 2. 대출 현황 |\n");
-		System.out.println("|-----------------------------|\n");
-		System.out.println(" 메뉴를 선택하세요: ");
-		selectedMenuItem = MenuItemScan.nextLine();
+		System.out.println("|-------------------------------------|\n");
+		System.out.println("|----------Student Main Menu----------|\n");
+		System.out.println("|           1. Search book            |\n");
+		System.out.println("|          2. current checkout        |\n"); 
+		System.out.println("|-------------------------------------|\n");
+		System.out.println(" Select Menu: ");
+	        selectedMenuItem = MenuItemScan.nextLine();
 		
 		switch(selectedMenuItem){
 		case "1":
@@ -27,7 +27,7 @@ public class Student {
 			CheckBorrowedList();
 			break;
 		default:
-			System.out.println("지원되지 않는 메뉴 번호입니다.");
+			System.out.println("The number you press is not apply");
 			break;
 		}
 		MenuItemScan.close();
@@ -35,15 +35,14 @@ public class Student {
 
 	private void search(){
 		Scanner scnbook = new Scanner(System.in);
-		System.out.print("책을 검색하시려면 책 제목의 일부를 입력해주세요. 메뉴로 다시 돌아가기길 원하면 숫자 1을 눌러주세요");
+		System.out.print("If you want to search, enter the part of book title. If you want to go back, press1");
 		String back = scnbook.nextLine();
-		//책 제목이 들어왔을 경우 검색으로 가기
 		switch(back){
 		case "1":
 			StudentMenu();
 			break;
 		default:
-			System.out.println("지원되지 않는 메뉴번호입니다.");
+			System.out.println("The number you pressed is not apply.");
 			break;
 		}
 	}
@@ -54,16 +53,16 @@ public class Student {
 		BorrowBook borrowedbook = new BorrowBook();
 		borrowedbook.CheckBorrowedBookList(userId);
 		
-		System.out.print("반납을 원하시면 1번을 누르세요. 원하지 않으시면 아무 키를 눌러주세요");
+		System.out.print("If you want to return the book, press 1. If you don't want anythig, press anything");
 		String checkbookmenu = scncheck.nextLine();
 		switch(checkbookmenu){
 		case "1":
-			System.out.print("반납을 원하는 책의 번호를 입력해주세요. ");
+			System.out.print("Press the book number what you want to return.");
 			String selectedbook = scncheck.nextLine();
 			borrowedbook.CheckoutBorrowedBook(userId, selectedbook);
 			break;
 		default:
-			System.out.println("이전 메뉴로 돌아가겠습니다.");
+			System.out.println("Go back before Menu");
 			break;
 		}
 		Student st = new Student();
