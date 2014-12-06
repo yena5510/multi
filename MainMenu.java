@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+//When program start it begins.
 public class MainMenu {
-	 String user_id;
+     String user_id;
      String user_pw;
      String user_name;
      String user_major;
