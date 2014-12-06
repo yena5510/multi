@@ -80,9 +80,9 @@ public class Manage {
 		book_number = scn2.next();
 		System.out.println("book title: ");
 		title = scn2.next();
-		System.out.println("Name: ");
+		System.out.println("writer: ");
 		writer = scn2.next();
-		System.out.println("Major: ");
+		System.out.println("publisher: ");
 		publisher = scn2.next();
 
 		System.out.println(book_number+ " " + title + "  " + writer + " " + publisher + "  ");
