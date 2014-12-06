@@ -50,21 +50,22 @@ public class Student {
 		
 	private void CheckBorrowedList(){
 		Scanner scncheck = new Scanner(System.in);
-		
 		BorrowBook borrowedbook = new BorrowBook();
-		borrowedbook.CheckBorrowedBookList(userId);
+		int exitBorrowedbook = borrowedbook.CheckBorrowedBookList(userId);
 		
-		System.out.print("If you want to return the book, press 1. If you don't want anythig, press anything");
-		String checkbookmenu = scncheck.nextLine();
-		switch(checkbookmenu){
-		case "1":
-			System.out.print("Press the book number what you want to return.");
-			String selectedbook = scncheck.nextLine();
-			borrowedbook.CheckoutBorrowedBook(userId, selectedbook);
-			break;
-		default:
-			System.out.println("Go back before Menu");
-			break;
+		if(exitBorrowedbook == 1){
+			System.out.print("If you want to return the book, press 1. If you don't want anythig, press anything");
+			String checkbookmenu = scncheck.nextLine();
+			switch(checkbookmenu){
+			case "1":
+				System.out.print("Press the book number what you want to return.");
+				String selectedbook = scncheck.nextLine();
+				borrowedbook.CheckoutBorrowedBook(userId, selectedbook);
+				break;
+			default:
+				System.out.println("Go back before Menu");
+				break;
+			}
 		}
 		Student st = new Student();
 		st.StudentMenu();
