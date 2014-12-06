@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MainMenu {
-	 String st_id;
-     String st_pw;
-     String st_name;
-     String st_major;
-     String st_type;    
+	 String user_id;
+     String user_pw;
+     String user_name;
+     String user_major;
+     String user_type;    
 	public static Connection makeConnection(){
         String url = "jdbc:mysql://localhost:3307/library";
         String id = "root";
@@ -20,9 +20,9 @@ public class MainMenu {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("success ... Connecting database.");
+           // System.out.println("success ... Connecting database.");
             con = DriverManager.getConnection(url, id, pw);
-            System.out.println("Success to connect database");
+           // System.out.println("Success to connect database");
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -86,16 +86,20 @@ public class MainMenu {
             String sql = "Select * from user where id="+id+";";
             ResultSet rs =stmt.executeQuery(sql); 
             while(rs.next()){
-                st_id = rs.getString("id");
-                st_pw = rs.getString("password");
-                st_name = rs.getString("name");
-                st_major = rs.getString("major");
-                st_type = rs.getString("type");                
+                user_id = rs.getString("id");
+                user_pw = rs.getString("password");
+                user_name = rs.getString("name");
+                user_major = rs.getString("major");
+                user_type = rs.getString("type");                
                 //System.out.println(st_id+"\t"+st_pw+"\t"+st_name+"\t"+st_major+"\t"+st_type);
                 //System.out.println(st_id + id + st_pw + password );
             } 
-            if((st_id.equals(id))&&(st_pw.equals(password))){
-            	goStudentMenu();
+            if((user_id.equals(id))&&(user_pw.equals(password))){
+            	if(user_type.equals(0))
+            		goStudentMenu();
+            	else
+            		goManageMenu();
+            	
             }
             else
             {
@@ -161,6 +165,10 @@ public class MainMenu {
 	private void goStudentMenu(){
 		Student st = new Student();
     	st.StudentMenu();
+	}
+	private void goManageMenu(){
+		Manage mg = new Manage();
+		mg.Manage();  
 	}
 
 }
