@@ -95,11 +95,14 @@ public class MainMenu {
                 //System.out.println(st_id + id + st_pw + password );
             } 
             if((user_id.equals(id))&&(user_pw.equals(password))){
-            	if(user_type.equals(0))
+            	switch(user_type){
+            	case "0":
             		goStudentMenu();
-            	else
+            		break;
+            	case "1":
             		goManageMenu();
-            	
+            		break;
+            	}
             }
             else
             {
