@@ -37,13 +37,13 @@ public class Manage {
 	public static void Manage() {
 		Scanner scn = new Scanner(System.in);
         
-        System.out.println("-------Menu------------");
-        System.out.println("1. 책 등록");
-        System.out.println("2. 책 검색");
-        System.out.println("3. 책 삭제");
-        System.out.println("4. 책 정보 업데이트");
+        System.out.println("-------Manage Menu------------");
+        System.out.println("1. Register the book");
+        System.out.println("2. Search the book");
+        System.out.println("3. Delete the book");
+        System.out.println("4. Update book information");
         System.out.println("-----------------------");
-        System.out.print("메뉴를 선택하세요 => ");
+        System.out.print("Select the menu => ");
         
         int menu = scn.nextInt();
 
@@ -61,7 +61,7 @@ public class Manage {
         	Update();
             break;
         default:
-            System.out.println("지원되지 않는 메뉴 번호입니다.");
+            System.out.println("The number you press is not apply.");
             break;
         }       
 	}
@@ -98,7 +98,7 @@ public class Manage {
             e.printStackTrace();
         }	
 		
-		System.out.print("book registeration is done.menu로 돌아가고 싶으면 1를 입력하세요 => ");
+		System.out.print("book registeration is done.If you want to go back to menu press1 => ");
         
         int rg = scn2.nextInt();
         switch (rg) {
@@ -106,7 +106,7 @@ public class Manage {
         	Manage();
             break;
         default:
-            System.out.println("잘못된 입력입니다.");
+            System.out.println("Insert is wrong.");
             break;
         }	
 	}
@@ -114,7 +114,7 @@ public class Manage {
 	private static void Search() {
 		Scanner scn3 = new Scanner(System.in);
 		
-        System.out.print("menu로 돌아가고 싶으면 1를 입력하세요 => ");
+        System.out.print(" If you want to go back to menu press1=> ");
         
         int sear = scn3.nextInt();
         switch (sear) {
@@ -122,7 +122,7 @@ public class Manage {
         	Manage();
             break;
         default:
-            System.out.println("잘못된 입력입니다.");
+            System.out.println("Insert is wrong.");
             break;
         }		
 	}
@@ -130,7 +130,7 @@ public class Manage {
 	private static void Delete() {
 		Scanner scn4 = new Scanner(System.in);
 		
-        System.out.print("menu로 돌아가고 싶으면 1를 입력하세요 => ");
+        System.out.print("If you want to go back to menu press1=> ");
         
         int del = scn4.nextInt();
         switch (del) {
@@ -138,7 +138,7 @@ public class Manage {
         	Manage();
             break;
         default:
-            System.out.println("잘못된 입력입니다.");
+            System.out.println("Insert is wrong.");
             break;
         }		
 	}
@@ -146,7 +146,7 @@ public class Manage {
 	private static void Update() {
 		Scanner scn5 = new Scanner(System.in);
 		
-        System.out.print("menu로 돌아가고 싶으면 1를 입력하세요 => ");
+        System.out.print("If you want to go back to menu press1 => ");
         
         int up = scn5.nextInt();
         switch (up) {
@@ -154,7 +154,7 @@ public class Manage {
         	Manage();
             break;
         default:
-            System.out.println("잘못된 입력입니다.");
+            System.out.println("Insert is wrong.");
             break;
         }		
 	}
