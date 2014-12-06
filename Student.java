@@ -1,23 +1,22 @@
 import java.util.Scanner;
 
 public class Student {
+	String userId = "1110193";
 
 	public static void main(String[] args) {
 		Student st = new Student();
 		st.StudentMenu();
 	}
 	
-	public static void StudentMenu(){
+	public void StudentMenu(){
 		String selectedMenuItem;
 		Scanner MenuItemScan = new Scanner(System.in);
-		
 		System.out.println("|-----------------------------|\n");
-		System.out.println("|----------ÇĞ»ı ¸ŞÀÎ ¸Ş´º----------|\n");
-		System.out.println("| 1. Ã¥ °Ë»öÇÏ±â                               |\n");
-		System.out.println("| 2. ´ëÃâ ÇöÈ²                                 |\n");
+		System.out.println("|----------í•™ìƒ ë©”ì¸ ë©”ë‰´----------|\n");
+		System.out.println("| 1. ì±… ê²€ìƒ‰í•˜ê¸° |\n");
+		System.out.println("| 2. ëŒ€ì¶œ í˜„í™© |\n");
 		System.out.println("|-----------------------------|\n");
-		System.out.println(" ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä: ");
-		
+		System.out.println(" ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”: ");
 		selectedMenuItem = MenuItemScan.nextLine();
 		
 		switch(selectedMenuItem){
@@ -25,46 +24,49 @@ public class Student {
 			search();
 			break;
 		case "2":
-			checkOut();
+			CheckBorrowedList();
 			break;
 		default:
-			System.out.println("Áö¿øµÇÁö ¾Ê´Â ¸Ş´º ¹øÈ£ÀÔ´Ï´Ù.");
-			break;		
+			System.out.println("ì§€ì›ë˜ì§€ ì•ŠëŠ” ë©”ë‰´ ë²ˆí˜¸ì…ë‹ˆë‹¤.");
+			break;
 		}
-		
-		MenuItemScan.close();	
+		MenuItemScan.close();
 	}
-	
-	private static void search(){
-		Scanner scnbook = new Scanner(System.in);
-		 System.out.print("Ã¥À» °Ë»öÇÏ½Ã·Á¸é Ã¥ Á¦¸ñÀÇ ÀÏºÎ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä. ¸Ş´º·Î ´Ù½Ã µ¹¾Æ°¡±â±æ ¿øÇÏ¸é ¼ıÀÚ 1À» ´­·¯ÁÖ¼¼¿ä");
-		 String back = scnbook.nextLine();
-		 //Ã¥ Á¦¸ñÀÌ µé¾î¿ÔÀ» °æ¿ì °Ë»öÀ¸·Î °¡±â
-		 switch(back){
-		 case "1":
-			 StudentMenu();
-			 break;
-		default:
-			System.out.println("Áö¿øµÇÁö ¾Ê´Â ¸Ş´º¹øÈ£ÀÔ´Ï´Ù.");
-			break;
-			 
-		 }	 
-	}
-	
-	private static void checkOut(){
-		Scanner scncheck = new Scanner(System.in);
-		 System.out.print("´ëÃâÇÑ Ã¥ÀÇ ¸ñ·ÏÀÔ´Ï´Ù. ¹İ³³À» ¿øÇÏ½Ã¸é ÇØ´ç Ã¥ÀÇ ¹øÈ£¸¦ ´­·¯ÁÖ¼¼¿ä.");
-		 String checkbooknu = scncheck.nextLine();
-		 switch(checkbooknu){
-		 case "1":
-			 break;
-		default:
-			System.out.println("Áö¿øµÇÁö ¾Ê´Â ¸Ş´º¹øÈ£ÀÔ´Ï´Ù.");
-			break;
-			 
-		 }	 
-	}
-	
-	
 
+	private void search(){
+		Scanner scnbook = new Scanner(System.in);
+		System.out.print("ì±…ì„ ê²€ìƒ‰í•˜ì‹œë ¤ë©´ ì±… ì œëª©ì˜ ì¼ë¶€ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”. ë©”ë‰´ë¡œ ë‹¤ì‹œ ëŒì•„ê°€ê¸°ê¸¸ ì›í•˜ë©´ ìˆ«ì 1ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”");
+		String back = scnbook.nextLine();
+		//ì±… ì œëª©ì´ ë“¤ì–´ì™”ì„ ê²½ìš° ê²€ìƒ‰ìœ¼ë¡œ ê°€ê¸°
+		switch(back){
+		case "1":
+			StudentMenu();
+			break;
+		default:
+			System.out.println("ì§€ì›ë˜ì§€ ì•ŠëŠ” ë©”ë‰´ë²ˆí˜¸ì…ë‹ˆë‹¤.");
+			break;
+		}
+	}
+		
+	private void CheckBorrowedList(){
+		Scanner scncheck = new Scanner(System.in);
+		
+		BorrowBook borrowedbook = new BorrowBook();
+		borrowedbook.CheckBorrowedBookList(userId);
+		
+		System.out.print("ë°˜ë‚©ì„ ì›í•˜ì‹œë©´ 1ë²ˆì„ ëˆ„ë¥´ì„¸ìš”. ì›í•˜ì§€ ì•Šìœ¼ì‹œë©´ ì•„ë¬´ í‚¤ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
+		String checkbookmenu = scncheck.nextLine();
+		switch(checkbookmenu){
+		case "1":
+			System.out.print("ë°˜ë‚©ì„ ì›í•˜ëŠ” ì±…ì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”. ");
+			String selectedbook = scncheck.nextLine();
+			borrowedbook.CheckoutBorrowedBook(userId, selectedbook);
+			break;
+		default:
+			System.out.println("ì´ì „ ë©”ë‰´ë¡œ ëŒì•„ê°€ê² ìŠµë‹ˆë‹¤.");
+			break;
+		}
+		Student st = new Student();
+		st.StudentMenu();
+	}
 }
