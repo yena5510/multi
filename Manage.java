@@ -1,6 +1,34 @@
+package dbtest2;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
-public class Manage {
+public class Manage {   
+	public static Connection makeConnection(){
+        String url = "jdbc:mysql://localhost:3307/library";
+        String id = "root";
+        String pw = "gina1768";
+        Connection con = null;
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+           // System.out.println("success ... Connecting database.");
+            con = DriverManager.getConnection(url, id, pw);
+           // System.out.println("Success to connect database");
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        return con;
+    }
+	
 	public static void main(String[] args) {
 		Manage mg = new Manage();
 		mg.Manage();       
@@ -39,9 +67,38 @@ public class Manage {
 	}
 
 	private static void Register() {
+		String book_number;
+		String title;
+		String writer;
+		String publisher;
+		
+		
 		Scanner scn2 = new Scanner(System.in);
 		
-        System.out.print("menu로 돌아가고 싶으면 1를 입력하세요 => ");
+		System.out.println("make new book\n");
+		System.out.println("Book number: ");
+		book_number = scn2.next();
+		System.out.println("book title: ");
+		title = scn2.next();
+		System.out.println("Name: ");
+		writer = scn2.next();
+		System.out.println("Major: ");
+		publisher = scn2.next();
+
+		System.out.println(book_number+ " " + title + "  " + writer + " " + publisher + "  ");
+        
+		
+		try {
+	          
+            Connection con = makeConnection();
+            Statement stmt = con.createStatement();           
+            String sql2 = "Insert into book values('"+book_number+"','"+ title+"','"+writer+"','"+publisher+"',NULL)";
+            stmt.execute(sql2);            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }	
+		
+		System.out.print("book registeration is done.menu로 돌아가고 싶으면 1를 입력하세요 => ");
         
         int rg = scn2.nextInt();
         switch (rg) {
@@ -103,3 +160,4 @@ public class Manage {
 	}
 
 }
+
