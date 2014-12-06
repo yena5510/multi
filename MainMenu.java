@@ -91,15 +91,18 @@ public class MainMenu {
                 user_name = rs.getString("name");
                 user_major = rs.getString("major");
                 user_type = rs.getString("type");                
-                //System.out.println(st_id+"\t"+st_pw+"\t"+st_name+"\t"+st_major+"\t"+st_type);
-                //System.out.println(st_id + id + st_pw + password );
+               
+                
             } 
             if((user_id.equals(id))&&(user_pw.equals(password))){
-            	if(user_type.equals(0))
+            	switch(user_type){
+            	case "0":
             		goStudentMenu();
-            	else
+            		break;
+            	case "1":
             		goManageMenu();
-            	
+            		break;
+            	}
             }
             else
             {
