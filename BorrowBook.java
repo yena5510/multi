@@ -6,7 +6,7 @@ import com.mysql.jdbc.Connection;
 
 
 public class BorrowBook {
-	private MysqlUtils mysql = new MysqlUtils("localhost", "3306", "root", "1111", "test");// "library");
+	private MysqlUtils mysql = new MysqlUtils("localhost", "3306", "root", "1111", "library");
 
 	int CheckBook(String userId, String selectBooknumber){
 		int check = 1; //1이면 대출 가능, 2이면 대출 불가능
