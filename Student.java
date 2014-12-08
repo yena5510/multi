@@ -1,5 +1,6 @@
 ﻿import java.util.Scanner;
-//sssss
+//ssss
+//ssssss
 public class Student {
 	String userId = "1110193";
 
