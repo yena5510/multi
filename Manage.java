@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 //mmmmmmmmmm
 //mmmmmm
-//mmmmmmm
+
 public class Manage {   
 	public static Connection makeConnection(){
         String url = "jdbc:mysql://localhost:3307/library";
