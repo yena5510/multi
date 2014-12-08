@@ -5,8 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//Mainmenu class
-//When program start it begins.
+
 public class MainMenu {
      String user_id;
      String user_pw;
