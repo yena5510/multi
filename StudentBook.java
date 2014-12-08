@@ -6,7 +6,7 @@ import com.mysql.jdbc.Connection;
 
 
 public class StudentBook {
-	private MysqlUtils mysql = new MysqlUtils("localhost", "3306", "root", "1111", "test");// "library");
+	private MysqlUtils mysql = new MysqlUtils("localhost", "3306", "root", "1111", "library");
 	
 	void SearchBook(String selectBookTitle){
 		try{
