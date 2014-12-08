@@ -5,9 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
-//rebase master
-//Manage clas
-//master
+
 public class Manage {   
 	public static Connection makeConnection(){
         String url = "jdbc:mysql://localhost:3307/library";
