@@ -5,9 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-// 임폴트 문 부를 때 같은 이름의 객체가 여러가지 있기 때문에 잘 못 부를 수 있다.
-// I think i can do it!!!!!!!
-//go for it!!
+
 public class ConnectDatabaseTest1 {
     public static Connection makeConnection(){
         String url = "jdbc:mysql://localhost:3307/booktest";
